@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota+Text&display=swap');
+
+/* Main title */
+h1{
+    font-family: 'Karla', sans-serif;
+    text-align: center;
+    font-size: 75px;
+    color: #358180;
+}
+
+h2{
+    font-family: 'Bellota Text', cursive;
+    font-size: 40px;
+}
+
+h3{
+    font-family: 'Bellota Text', cursive;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* Navigation Bar */
+a{
+    text-decoration: none;
+    padding: 8px;
+    font-family: 'Bellota Text', cursive;
+    color: #286666;
+    font-size: 30px;
+    text-align: center;
+    line-height:70px;
+    opacity: 0.6;
+    position: relative;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/* text on home page */
+p{
+    margin-left: 20px;
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.center{
+    text-align: center;
+}
+
+/* Column in home page */
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column{
+    float: left;
+    width: 50%;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Bellota Text', cursive;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+}
+
+/* columns for food display */
+.fcolumn {
+    flex: 25%;
+    font-size: 20px;
+    font-family: 'Karla', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    position: center;
+}
+
+/* food image sizes */
+.food{
+    width: 200px;
+    height: 200px;
+}
+
+.dcolumn {
+    flex: 20%;
+    font-size: 20px;
+    font-family: 'Karla', sans-serif;
+    padding-right: 10px;
+    text-align: center;
+    position: center;
+}
+
+.drink{
+    width: 300px;
+    height: 300px;
+}
+
+body{
+    background-color: #F1F8F8;
+}
+
+/* logos size */
+.logo{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+/* logo column */
+.lcolumn {
+    flex: 10%;
+    padding-left: 10px;
+    float: left;
+}
+
+/* footer for pages */
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #358180;
+    color: black;
+}
+
+
+input{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+}
+
+form{
+    text-align: center;
+}
+
+select{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+}
+main{
+    font-family: 'Karla', sans-serif;
+    font-size: 25px;
+    margin-left: 50px;
+}
