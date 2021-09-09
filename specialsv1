@@ -1,0 +1,23 @@
+<?php
+include 'connection.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> WGC CANTEEN </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href ="stylev1.css">
+</head>
+
+<body>
+<header>
+    <h1> SPECIALS </h1>
+</header>
+<nav>
+    <a href="indexv1.php"> HOME </a>
+    <a href="foodv1.php"> FOOD </a>
+    <a href="drinksv1.php"> DRINKS </a>
+    <a href="specialsv1.php"> SPECIALS </a>
+</nav>
+</html>
