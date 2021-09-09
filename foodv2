@@ -1,0 +1,135 @@
+<?php
+$con = mysqli_connect("localhost", "chinsh", "swiftbrain55", "chinsh_canteen");
+if(mysqli_connect_errno()){
+    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
+else{
+    echo "connected to database";
+}
+
+/* food Query */
+/* Select FoodID, Item FROM food */
+$all_food_query = 'SELECT FoodID, FItem FROM food';
+$all_food_result = mysqli_query($con, $all_food_query);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> WGC CANTEEN </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href ="stylev2.css">
+</head>
+
+<body>
+<header>
+    <h1>
+        <?php
+        echo "<img class='logo' src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' alt='WGC logo'/>";
+        ?>
+        FOOD
+    </h1>
+
+    <nav>
+        <ul>
+            <a href="indexv2.php"> HOME </a>
+            <a href="foodv2.php"> FOOD </a>
+            <a href="drinksv2.php"> DRINKS </a>
+            <a href="specialsv2.php"> SPECIALS </a>
+        </ul>
+    </nav>
+
+</header>
+
+<main>
+    <h3>SEARCH A ITEM</h3>
+    <form action="" method="post">
+        <input type="text" name='search'>
+        <input type="submit" name="submit" value="go!">
+    </form>
+    <?php
+
+    if(isset($_POST['search'])) {
+        $search = $_POST['search'];
+
+        $query1 = "SELECT * FROM food WHERE FItem LIKE '%$search%'";
+        $query = mysqli_query($con, $query1);
+        $count = mysqli_num_rows($query);
+
+        if($count ==0) {
+            echo "<p> There was no search results!";
+        }else{
+            while($row = mysqli_fetch_array($query)){
+                echo "<br>";
+                echo $row ['FItem'];
+            }
+        }
+    }
+    ?>
+    <div class="row">
+        <div class="fcolumn">
+            <?php
+            echo "<img class='food' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBjMCmdag1TcrhLaW6hw11fppo0JoJB2DVVhED1FKMP0PEsrGrYHFmdoN41erdu7iEvns&usqp=CAU' alt='Mince pie'/>";
+            ?> <br> Mince Pie
+            <br>
+        </div>
+
+        <div class="fcolumn">
+            <?php
+            echo "<img class='food' src='https://www.currizzas.co.nz/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/r/cruopy.png' alt='Brownie'/>";
+            ?> <br> Brownie
+        </div>
+
+        <div class="fcolumn">
+            <?php
+            echo "<img class='food' src='https://jw-webmagazine.com/wp-content/uploads/2019/06/jw-5d15cec3259695.86450125.png' alt='Instant Noodles'/>";
+            ?> <br> Instant Noodles
+            <br>
+        </div>
+
+        <div class="fcolumn">
+            <?php
+            echo "<img class='food' src='https://www.crocodille.com/files/panini-prague-ham-and-emmental.png' alt='Panini'/>";
+            ?> <br> Panini
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="fcolumn">
+            <?php
+            echo "<img class='food' src='https://www.lordofthefries.com.au/wp-content/uploads/2019/11/shoestring-fries-v2.png' alt='Hot Chips'/>";
+            ?> <br> Hot Chips
+            <br>
+        </div>
+
+        <div class="fcolumn">
+            <br>
+            <?php
+            echo "<img class='food' src='https://www.sushiizu.com.au/wp-content/uploads/2019/03/mixed-veggie-hoso-roll.png' alt='Vegetarian Sushi'/>";
+            ?> <br> Vegetarian Sushi
+        </div>
+
+        <div class="fcolumn">
+            <br>
+            <?php
+            echo "<img class='food' src='https://mcdonalds.co.nz/sites/mcdonalds.co.nz/files/Cheeseburger_BB_Low_XXX_2019_SMP_0.png' alt='Cheeseburger'/>";
+            ?> <br> Cheeseburger
+        </div>
+
+        <div class="fcolumn">
+            <br>
+            <?php
+            echo "<img class='food' src='https://pcpizza.co.nz/wp-content/uploads/2018/11/wedges.png' alt='Wedges'/>";
+            ?> <br> Wedges
+        </div>
+    </div>
+
+
+</main>
+<div class="footer">
+    <?php
+    include 'footer.php'
+    ?>
+</div>
+</html>
