@@ -1,0 +1,110 @@
+<?php
+$con = mysqli_connect("localhost", "chinsh", "swiftbrain55", "chinsh_canteen");
+if(mysqli_connect_errno()){
+    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
+else{
+    echo "connected to database";
+}
+
+/* food Query */
+/* Select FoodID, Item FROM food */
+$all_food_query = 'SELECT FoodID, FItem, FCost, FStock FROM food';
+$all_food_result = mysqli_query($con, $all_food_query);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> WGC CANTEEN </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href ="stylev3.css">
+</head>
+
+<body>
+<header>
+    <h1>
+        <?php
+        echo "<img class='logo' src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' alt='WGC logo'/>";
+        ?>
+        FOOD
+    </h1>
+
+    <nav>
+        <ul>
+            <a href="indexv3.php"> HOME </a>
+            <a href="foodv3.php"> FOOD </a>
+            <a href="drinksv3.php"> DRINKS </a>
+            <a href="specialsv3.php"> SPECIALS </a>
+        </ul>
+    </nav>
+
+</header>
+
+<main>
+    <h3>SEARCH A ITEM</h3>
+    <form action="" method="post">
+        <input type="text" name='search'>
+        <input type="submit" name="submit" value="go!">
+    </form>
+    <?php
+
+    if(isset($_POST['search'])) {
+        $search = $_POST['search'];
+
+        $query1 = "SELECT * FROM food WHERE FItem LIKE '%$search%'";
+        $query = mysqli_query($con, $query1);
+        $count = mysqli_num_rows($query);
+
+        if($count ==0) {
+            echo "<p> There was no search results!";
+        }else{
+            while($row = mysqli_fetch_array($query)){
+                echo "<br>";
+                echo $row ['FItem'] ;
+                echo $row ['FCost'];
+                echo $row ['FStock'];
+            }
+        }
+    }
+    ?>
+    <h3> View all options</h3>
+
+    <form action="foodv3.php" method="post">
+        <input type='submit' name='testquery1' value="Items">
+    </form>
+
+    <?php
+        if(isset($_POST['testquery1'])) {
+            $result = mysqli_query($con, "SELECT * FROM food");
+            if (mysqli_num_rows($result) != 0) {
+                echo "<table>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th class='drinkColumn'>ITEM</th>";
+                echo "<th class='costColumn'>COST </th>";
+                echo "<th class ='stockColumn'>STOCK</th>";
+                echo "</tr>";
+                echo "</thead>";
+                while ($test = mysqli_fetch_array($result)) {
+                    $id = $test['FoodID'];
+
+                    echo "<tr>";
+                    echo "<td>" . $test['FItem'] . "</td>";
+                    echo "<td>" . $test['FCost'] . "</td>";
+                    echo "<td>" . $test['FStock'] . "</td>";
+                    echo "</tr>";
+
+
+                }
+                echo "</table>";
+            }
+        }
+    ?>
+ </main>
+<div class="footer">
+    <?php
+    include 'footer.php'
+    ?>
+</div>
+</html>
