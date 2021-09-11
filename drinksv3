@@ -68,7 +68,11 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
     <h3> View all options</h3>
 
     <form action="drinksv3.php" method="post">
-        <input type='submit' name='testquery1' value="Drinks">
+        <input type='submit' name='drinksquery' value="Drinks">
+    </form>
+
+    <form action="drinksv3.php" method="post">
+        <input type='submit' name='drinkscostquery' value="DCost">
     </form>
 
     <?php
