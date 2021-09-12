@@ -42,65 +42,168 @@ $all_food_result = mysqli_query($con, $all_food_query);
 </header>
 
 <main>
-    <h3>SEARCH A ITEM</h3>
-    <form action="" method="post">
-        <input type="text" name='search'>
-        <input type="submit" name="submit" value="go!">
-    </form>
-    <?php
+    <div class="row">
+        <div class="column" >
+            <h3> View all options</h3>
 
-    if(isset($_POST['search'])) {
-        $search = $_POST['search'];
+            <form action="foodv3.php" method="post">
+                <input type='submit' name='testquery1' value="All Items">
+            </form>
 
-        $query1 = "SELECT * FROM food WHERE FItem LIKE '%$search%'";
-        $query = mysqli_query($con, $query1);
-        $count = mysqli_num_rows($query);
+            <form action="foodv3.php" method="post">
+                <input type='submit' name='foodcostquery' value="Cost">
+            </form>
 
-        if($count ==0) {
-            echo "<p> There was no search results!";
-        }else{
-            while($row = mysqli_fetch_array($query)){
-                echo "<br>";
-                echo $row ['FItem'] ;
-                echo $row ['FCost'];
-                echo $row ['FStock'];
-            }
-        }
-    }
-    ?>
-    <h3> View all options</h3>
+            <form action="foodv3.php" method="post">
+                <input type='submit' name='fooditemquery' value="A-Z">
+            </form>
 
-    <form action="foodv3.php" method="post">
-        <input type='submit' name='testquery1' value="Items">
-    </form>
+            <form action="foodv3.php" method="post">
+                <input type='submit' name='foodstockquery' value="Stock">
+            </form>
 
-    <?php
-        if(isset($_POST['testquery1'])) {
-            $result = mysqli_query($con, "SELECT * FROM food");
-            if (mysqli_num_rows($result) != 0) {
-                echo "<table>";
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th class='drinkColumn'>ITEM</th>";
-                echo "<th class='costColumn'>COST </th>";
-                echo "<th class ='stockColumn'>STOCK</th>";
-                echo "</tr>";
-                echo "</thead>";
-                while ($test = mysqli_fetch_array($result)) {
-                    $id = $test['FoodID'];
-
+            <?php
+            if(isset($_POST['testquery1'])) {
+                $result = mysqli_query($con, "SELECT * FROM Food");
+                if (mysqli_num_rows($result) != 0) {
+                    echo "<table>";
+                    echo "<thead>";
                     echo "<tr>";
-                    echo "<td>" . $test['FItem'] . "</td>";
-                    echo "<td>" . $test['FCost'] . "</td>";
-                    echo "<td>" . $test['FStock'] . "</td>";
+                    echo "<th class='drinkColumn'>ITEM</th>";
+                    echo "<th class='costColumn'>COST </th>";
+                    echo "<th class ='stockColumn'>STOCK</th>";
                     echo "</tr>";
+                    echo "</thead>";
+                    while ($test = mysqli_fetch_array($result)) {
+                        $id = $test['FoodID'];
+
+                        echo "<tr>";
+                        echo "<td>" . $test['FItem'] . "</td>";
+                        echo "<td>" . $test['FCost'] . "</td>";
+                        echo "<td>" . $test['FStock'] . "</td>";
+                        echo "</tr>";
 
 
+                    }
+                    echo "</table>";
                 }
-                echo "</table>";
             }
-        }
-    ?>
+            ?>
+
+            <?php
+            if(isset($_POST['foodcostquery'])) {
+                $result = mysqli_query($con, "SELECT * FROM food ORDER BY food.FCost ASC");
+                if (mysqli_num_rows($result) != 0) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th class='drinkColumn'>ITEM</th>";
+                    echo "<th class='costColumn'>COST </th>";
+                    echo "<th class ='stockColumn'>STOCK</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    while ($test = mysqli_fetch_array($result)) {
+                        $id = $test['FoodID'];
+
+                        echo "<tr>";
+                        echo "<td>" . $test['FItem'] . "</td>";
+                        echo "<td>" . $test['FCost'] . "</td>";
+                        echo "<td>" . $test['FStock'] . "</td>";
+                        echo "</tr>";
+
+
+                    }
+                    echo "</table>";
+                }
+            }
+            ?>
+
+            <?php
+            if(isset($_POST['fooditemquery'])) {
+                $result = mysqli_query($con, "SELECT * FROM food ORDER BY food.FItem ASC");
+                if (mysqli_num_rows($result) != 0) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th class='drinkColumn'>ITEM</th>";
+                    echo "<th class='costColumn'>COST </th>";
+                    echo "<th class ='stockColumn'>STOCK</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    while ($test = mysqli_fetch_array($result)) {
+                        $id = $test['FoodID'];
+
+                        echo "<tr>";
+                        echo "<td>" . $test['FItem'] . "</td>";
+                        echo "<td>" . $test['FCost'] . "</td>";
+                        echo "<td>" . $test['FStock'] . "</td>";
+                        echo "</tr>";
+
+
+                    }
+                    echo "</table>";
+                }
+            }
+            ?>
+
+            <?php
+            if(isset($_POST['foodstockquery'])) {
+                $result = mysqli_query($con, "SELECT * FROM food ORDER BY food.FStock ASC");
+                if (mysqli_num_rows($result) != 0) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th class='drinkColumn'>ITEM</th>";
+                    echo "<th class='costColumn'>COST </th>";
+                    echo "<th class ='stockColumn'>STOCK</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    while ($test = mysqli_fetch_array($result)) {
+                        $id = $test['FoodID'];
+
+                        echo "<tr>";
+                        echo "<td>" . $test['FItem'] . "</td>";
+                        echo "<td>" . $test['FCost'] . "</td>";
+                        echo "<td>" . $test['FStock'] . "</td>";
+                        echo "</tr>";
+
+
+                    }
+                    echo "</table>";
+                }
+            }
+            ?>
+        </div>
+
+        <div class="column" >
+            <h3>SEARCH A ITEM</h3>
+            <form action="" method="post">
+                <input type="text" name='search'>
+                <input type="submit" name="submit" value="go!">
+            </form>
+            <?php
+
+            if(isset($_POST['search'])) {
+                $search = $_POST['search'];
+
+                $query1 = "SELECT * FROM food WHERE FItem LIKE '%$search%'";
+                $query = mysqli_query($con, $query1);
+                $count = mysqli_num_rows($query);
+
+                if($count ==0) {
+                    echo "<p> There was no search results!";
+                }else{
+
+                    while($row = mysqli_fetch_array($query)){
+                        echo "<br>";
+                        echo $row ['FItem'];
+                    }
+                }
+            }
+            ?>
+
+        </div>
+    </div>
  </main>
 <div class="footer">
     <?php
