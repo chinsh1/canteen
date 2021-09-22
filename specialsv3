@@ -14,10 +14,10 @@ if(isset($_GET['special'])){
 /* Specials Query */
 /*SELECT specials.Weekday, foods.FItem, drinks.DItem FROM specials, foods, drinks */
 
-$this_specials_query = "SELECT specials.Weekday, food.FItem, drinks.DItem
+$this_specials_query = "SELECT specials.Weekday, food.FItem, drinks.DItem, specials.Special
 FROM specials, food, drinks
 WHERE food.FoodID = specials.FoodID
-AND drinks.DrinkID = specials.DrinkID AND specials.Weekday = '" .$id. "'";
+AND drinks.DrinkID = specials.DrinkID AND specials.Special AND specials.Weekday = '" .$id. "'";
 $this_specials_result = mysqli_query($con, $this_specials_query);
 $this_specials_record = mysqli_fetch_assoc($this_specials_result);
 
@@ -39,7 +39,7 @@ $all_specials_result = mysqli_query($con, $all_specials_query);
 
 <header>
     <h1> <?php
-        echo "<img class='logo' src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' alt='WGC logo' align='top'/>";
+        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
         ?> SPECIALS </h1>
 
     <nav>
@@ -77,6 +77,7 @@ $all_specials_result = mysqli_query($con, $all_specials_query);
             echo "<p class='center'> Day of the week: " .$this_specials_record['Weekday'] . "<br>";
             echo "<p class='center'> Food special: " .$this_specials_record['FItem'] . "<br>";
             echo "<p class='center'> Drink special: " .$this_specials_record['DItem'] . "<br>";
+            echo "<p class='center'> Total Cost: $" .$this_specials_record['Special'] . "<br>";
             ?>
         </div>
 
