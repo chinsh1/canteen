@@ -56,9 +56,10 @@ else{
         </div>
     </div>
 </main>
-<div class="footer">
-<?php
-include 'footer.php'
-?>
-</div>
+<footer>
+    Contact information:<br>
+    Email: chinsh@wgc.school.nz<br>
+    Phone: 022 987 5684<br>
+    Instagram: @wgc_canteen
+</footer>
 </html>
