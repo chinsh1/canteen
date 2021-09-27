@@ -24,7 +24,7 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
 <body>
 <header>
     <h1> <?php
-        echo "<img class='logo' src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' alt='WGC logo'/>";
+        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
         ?> DRINKS </h1>
     <nav>
         <ul>
@@ -41,21 +41,24 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
         <div class="column" >
             <h3> View all options</h3>
 
-            <form action="drinksv3.php" method="post">
-                <input type='submit' name='testquery1' value="All Drinks">
-            </form>
+            <div class="row">
 
-            <form action="drinksv3.php" method="post">
-                <input type='submit' name='drinkcostquery' value="Cost">
-            </form>
+                <form action="drinksv3.php" method="post" class="button">
+                    <input type='submit' name='testquery1' value="All Drinks">
+                </form>
 
-            <form action="drinksv3.php" method="post">
-                <input type='submit' name='drinkitemquery' value="A-Z">
-            </form>
+                <form action="drinksv3.php" method="post" class="button">
+                    <input type='submit' name='drinkcostquery' value="Cost">
+                </form>
 
-            <form action="drinksv3.php" method="post">
-                <input type='submit' name='drinkstockquery' value="Stock">
-            </form>
+                <form action="drinksv3.php" method="post" class="button">
+                    <input type='submit' name='drinkitemquery' value="A-Z">
+                </form>
+
+                <form action="drinksv3.php" method="post" class="button">
+                    <input type='submit' name='drinkstockquery' value="Stock">
+                </form>
+            </div>
 
             <?php
             if(isset($_POST['testquery1'])) {
@@ -199,12 +202,11 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
 
         </div>
     </div>
-
 </main>
-<div class="footer">
-    <?php
-    include 'footer.php'
-    ?>
-</div>
+<footer>
+    Contact information:<br>
+    Email: chinsh@wgc.school.nz<br>
+    Phone: 022 987 5684<br>
+    Instagram: @wgc_canteen
+</footer>
 </html>
-
