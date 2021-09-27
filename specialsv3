@@ -26,7 +26,7 @@ $all_specials_query = "SELECT Weekday FROM specials";
 $all_specials_result = mysqli_query($con, $all_specials_query);
 
 ?>
-
+<!-- -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,22 +71,23 @@ $all_specials_result = mysqli_query($con, $all_specials_query);
             </form>
         </div>
 
-        <div class="column" >
+        <div class="column">
             <h2> Daily Special </h2>
             <?php
+            echo "<p>Welcome to the specials page, here are the items that are 20% off today!!</p>";
             echo "<p class='center'> Day of the week: " .$this_specials_record['Weekday'] . "<br>";
             echo "<p class='center'> Food special: " .$this_specials_record['FItem'] . "<br>";
             echo "<p class='center'> Drink special: " .$this_specials_record['DItem'] . "<br>";
             echo "<p class='center'> Total Cost: $" .$this_specials_record['Special'] . "<br>";
             ?>
         </div>
-
     </div>
 </main>
 
-<div class="footer">
-    <?php
-    include 'footer.php'
-    ?>
-</div>
+<footer>
+    Contact information:<br>
+    Email: chinsh@wgc.school.nz<br>
+    Phone: 022 987 5684<br>
+    Instagram: @wgc_canteen
+</footer>
 </html>
