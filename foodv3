@@ -25,7 +25,7 @@ $all_food_result = mysqli_query($con, $all_food_query);
 <header>
     <h1>
         <?php
-        echo "<img class='logo' src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' alt='WGC logo'/>";
+        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
         ?>
         FOOD
     </h1>
@@ -45,23 +45,23 @@ $all_food_result = mysqli_query($con, $all_food_query);
     <div class="row">
         <div class="column" >
             <h3> View all options</h3>
+            <div class="row">
+                <form action="foodv3.php" method="post" class="button">
+                    <input type='submit' name='testquery1' value="All Items">
+                </form>
 
-            <form action="foodv3.php" method="post">
-                <input type='submit' name='testquery1' value="All Items">
-            </form>
+                <form action="foodv3.php" method="post" class="button">
+                    <input type='submit' name='foodcostquery' value="Cost">
+                </form>
 
-            <form action="foodv3.php" method="post">
-                <input type='submit' name='foodcostquery' value="Cost">
-            </form>
+                <form action="foodv3.php" method="post" class="button">
+                    <input type='submit' name='fooditemquery' value="A-Z">
+                </form>
 
-            <form action="foodv3.php" method="post">
-                <input type='submit' name='fooditemquery' value="A-Z">
-            </form>
-
-            <form action="foodv3.php" method="post">
-                <input type='submit' name='foodstockquery' value="Stock">
-            </form>
-
+                <form action="foodv3.php" method="post" class="button">
+                    <input type='submit' name='foodstockquery' value="Stock">
+                </form>
+            </div>
             <?php
             if(isset($_POST['testquery1'])) {
                 $result = mysqli_query($con, "SELECT * FROM Food");
@@ -204,10 +204,11 @@ $all_food_result = mysqli_query($con, $all_food_query);
 
         </div>
     </div>
- </main>
-<div class="footer">
-    <?php
-    include 'footer.php'
-    ?>
-</div>
+</main>
+<footer>
+    Contact information:<br>
+    Email: chinsh@wgc.school.nz<br>
+    Phone: 022 987 5684<br>
+    Instagram: @wgc_canteen
+</footer>
 </html>
