@@ -1,47 +1,56 @@
 <?php
 $con = mysqli_connect("localhost", "chinsh", "swiftbrain55", "chinsh_canteen");
-if(mysqli_connect_errno()){
-    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
-else{
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
     echo "connected to database";
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- link to CSS page -->
 <head>
     <title> WGC CANTEEN </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href ="stylev3.css">
+    <link rel="stylesheet" type="text/css" href="stylev3.css">
 </head>
 
 <body>
 <header>
+    <!-- WGC logo in header-->
     <h1>
         <?php
-        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
+        echo "<a href='indexv3.php'> <img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/> </a>";
         ?>
         WGC CANTEEN
     </h1>
 </header>
-    <nav>
+<!-- links to other pages -->
+<nav>
+    <ul>
         <a href="indexv3.php"> HOME </a>
         <a href="foodv3.php"> FOOD </a>
         <a href="drinksv3.php"> DRINKS </a>
         <a href="specialsv3.php"> SPECIALS </a>
-    </nav>
+    </ul>
+</nav>
 
 <main>
+    <!-- formats about us and map into columns -->
     <div class="row">
-        <div class="column" >
+        <div class="column">
             <h2>About Us</h2>
-            <p>Welcome to the WGC canteen page!!! This is the best canteen that you will ever find in the whole
-                of Wellington, nothing compares to this. You can find all the information that you'll need on
-                food and drinks such as their availability, prices and other extra information.
+            <p>Welcome to the WGC canteen page! This is the best canteen that you will ever find in the whole of
+                Wellington nothing compares to this. You can find all the information that you'll need for food and
+                drinks. Such as their availability, prices, and extra other information. We have a specials page where
+                everything on special that day is 20% off!
+
             </p>
 
             <h2>Open Hours</h2>
-            <p class = "center">
+            <p class="center">
                 Monday: 10:30am - 1:35pm <br> <br>
                 Tuesday: 10:30am - 1:35pm <br> <br>
                 Wednesday: 11:00am - 1:45pm <br> <br>
@@ -50,12 +59,15 @@ else{
             </p>
 
         </div>
-        <div class="column" >
+        <!-- map to school -->
+        <div class="column">
             <h2>Where We Are</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d924.9926283010361!2d174.78006079302082!3d-41.275137842943195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38ae2f27710d0d%3A0x2d0763d38f00974b!2sWellington%20Girls&#39;%20College!5e0!3m2!1sen!2snz!4v1626470763102!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d924.9926283010361!2d174.78006079302082!3d-41.275137842943195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38ae2f27710d0d%3A0x2d0763d38f00974b!2sWellington%20Girls&#39;%20College!5e0!3m2!1sen!2snz!4v1626470763102!5m2!1sen!2snz"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 </main>
+<!-- footer -->
 <footer>
     Contact information:<br>
     Email: chinsh@wgc.school.nz<br>
