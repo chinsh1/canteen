@@ -1,54 +1,70 @@
+/* fonts imported from google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bellota+Text&display=swap');
 
 /* Main title */
-h1{
+h1 {
     font-family: 'Karla', sans-serif;
     font-size: 75px;
     color: #358180;
     text-align: center;
+    margin-right: 200px;
 }
 
-h2{
+/* headings on home page */
+h2 {
     font-family: 'Bellota Text', cursive;
     font-size: 40px;
+    text-align: center;
+    color: #358180;
 }
 
-h3{
+/* smaller headings e.g. drinks table */
+h3 {
     font-family: 'Bellota Text', cursive;
     font-size: 30px;
     text-align: center;
+    color: #358180;
 }
 
 /* Navigation Bar */
-a{
+a {
     text-decoration: none;
+    padding: 8px;
     font-family: 'Bellota Text', cursive;
     color: #286666;
-    font-size: 25px;
-    line-height:60px;
-    margin-left: 200px;
-    left:100px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+/*alignment of links*/
+ul {
+    text-align: center;
 }
 
 /* text on home page */
-p{
+p {
     margin-left: 20px;
     font-family: 'Karla', sans-serif;
     font-size: 20px;
     text-align: justify;
 }
 
-.center{
+/* places things in the center */
+.center {
     text-align: center;
 }
 
 /* font size for footer */
-.size{
+.size {
     font-size: 15px;
 }
 
-.column{
+/* the sizing of the columns */
+.column {
     float: left;
     width: 50%;
     padding: 10px;
@@ -63,29 +79,33 @@ p{
 }
 
 /* positioning for buttons to sort table */
-.button{
-    margin-left: 50px;
-    padding-right: 30px;
+.button {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Bellota Text', cursive;
+    text-align: center;
 }
 
 /* background colour for website */
-body{
+body {
     background-color: #F1F8F8;
 }
 
 /* logo size*/
-img{
+img {
     position: absolute;
-    top:60px;
-    left:60px;
+    top: 60px;
+    left: 60px;
 }
 
 /* footer for pages */
 footer {
     position: relative;
-    width: 100%;
+    width: auto;
     bottom: 0;
-    height:90px;
+    height: 90px;
     background-color: #358180;
     font-family: 'Karla', sans-serif;
     color: black;
@@ -94,26 +114,26 @@ footer {
 }
 
 /* search bar font and size */
-input{
+input {
     font-family: 'Karla', sans-serif;
     font-size: 20px;
 }
 
 /* buttons centered  */
-form{
+form {
     text-align: center;
 }
 
 /* drop down menu */
-select{
+select {
     font-family: 'Karla', sans-serif;
     font-size: 20px;
 }
 
 /* anything in main sections font */
-main{
+main {
     font-family: 'Karla', sans-serif;
-    font-size: 25px;
+    font-size: 30px;
     margin-left: 50px;
 }
 
@@ -122,22 +142,44 @@ main{
     width: 200px;
 }
 
+/* table layout */
+
 .foodColumn {
     width: 200px;
 }
+
+/* table layout */
 
 .costColumn {
     width: 200px;
 }
 
+/* table layout */
+
 .stockColumn {
     width: 200px;
 }
 
+/* formatting of table */
 table {
     margin: auto;
     border: thick solid #358180;
     border-spacing: 5px;
+    font-family: 'Karla', sans-serif;
+    color: black;
+}
+
+/*headers of columns */
+th {
+    color: black;
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+}
+
+/*information inside columns*/
+td {
+    text-align: center;
+    font-size: 17px;
     font-family: 'Karla', sans-serif;
     color: black;
 }
