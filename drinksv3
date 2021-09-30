@@ -1,8 +1,9 @@
 <?php
 $con = mysqli_connect("localhost", "chinsh", "swiftbrain55", "chinsh_canteen");
-if(mysqli_connect_errno()){
-    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
-else{
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
     echo "connected to database";
 }
 
@@ -15,17 +16,20 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- link to the CSS page -->
 <head>
     <title> WGC CANTEEN </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href ="stylev3.css">
+    <link rel="stylesheet" type="text/css" href="stylev3.css">
 </head>
 
 <body>
+<!-- WGC logo in header -->
 <header>
     <h1> <?php
-        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
+        echo "<a href='indexv3.php'> <img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/> </a>";
         ?> DRINKS </h1>
+    <!-- links to other pages -->
     <nav>
         <ul>
             <a href="indexv3.php"> HOME </a>
@@ -36,32 +40,32 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
     </nav>
 </header>
 <main>
-
+    <!-- format the table and search bar into a row -->
     <div class="row">
-        <div class="column" >
-            <h3> View all options</h3>
-
+        <div class="column">
+            <h2> View all options</h2>
             <div class="row">
-
+                <!--  button to show all drinks  -->
                 <form action="drinksv3.php" method="post" class="button">
                     <input type='submit' name='testquery1' value="All Drinks">
                 </form>
-
+                <!-- sort by cost-->
                 <form action="drinksv3.php" method="post" class="button">
                     <input type='submit' name='drinkcostquery' value="Cost">
                 </form>
-
+                <!--sort a-z ascending-->
                 <form action="drinksv3.php" method="post" class="button">
                     <input type='submit' name='drinkitemquery' value="A-Z">
                 </form>
-
+                <!--sort by stock-->
                 <form action="drinksv3.php" method="post" class="button">
                     <input type='submit' name='drinkstockquery' value="Stock">
                 </form>
             </div>
-
+            <!--  php for tables  -->
             <?php
-            if(isset($_POST['testquery1'])) {
+            if (isset($_POST['testquery1'])) {
+// query that prints by ID number
                 $result = mysqli_query($con, "SELECT * FROM drinks");
                 if (mysqli_num_rows($result) != 0) {
                     echo "<table>";
@@ -74,7 +78,7 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
                     echo "</thead>";
                     while ($test = mysqli_fetch_array($result)) {
                         $id = $test['DrinkID'];
-
+//titles of each column
                         echo "<tr>";
                         echo "<td>" . $test['DItem'] . "</td>";
                         echo "<td>" . $test['DCost'] . "</td>";
@@ -89,7 +93,8 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
             ?>
 
             <?php
-            if(isset($_POST['drinkcostquery'])) {
+            if (isset($_POST['drinkcostquery'])) {
+// query to sort by cost
                 $result = mysqli_query($con, "SELECT * FROM drinks ORDER BY drinks.DCost ASC");
                 if (mysqli_num_rows($result) != 0) {
                     echo "<table>";
@@ -102,7 +107,7 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
                     echo "</thead>";
                     while ($test = mysqli_fetch_array($result)) {
                         $id = $test['DrinkID'];
-
+//titles of each column
                         echo "<tr>";
                         echo "<td>" . $test['DItem'] . "</td>";
                         echo "<td>" . $test['DCost'] . "</td>";
@@ -117,7 +122,8 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
             ?>
 
             <?php
-            if(isset($_POST['drinkitemquery'])) {
+            if (isset($_POST['drinkitemquery'])) {
+// query to sort by asc
                 $result = mysqli_query($con, "SELECT * FROM drinks ORDER BY drinks.DItem ASC");
                 if (mysqli_num_rows($result) != 0) {
                     echo "<table>";
@@ -130,7 +136,7 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
                     echo "</thead>";
                     while ($test = mysqli_fetch_array($result)) {
                         $id = $test['DrinkID'];
-
+//titles of each column
                         echo "<tr>";
                         echo "<td>" . $test['DItem'] . "</td>";
                         echo "<td>" . $test['DCost'] . "</td>";
@@ -145,7 +151,8 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
             ?>
 
             <?php
-            if(isset($_POST['drinkstockquery'])) {
+            if (isset($_POST['drinkstockquery'])) {
+// query to sort by stock
                 $result = mysqli_query($con, "SELECT * FROM drinks ORDER BY drinks.DStock ASC");
                 if (mysqli_num_rows($result) != 0) {
                     echo "<table>";
@@ -158,7 +165,7 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
                     echo "</thead>";
                     while ($test = mysqli_fetch_array($result)) {
                         $id = $test['DrinkID'];
-
+//titles of each column
                         echo "<tr>";
                         echo "<td>" . $test['DItem'] . "</td>";
                         echo "<td>" . $test['DCost'] . "</td>";
@@ -172,37 +179,38 @@ $all_drinks_result = mysqli_query($con, $all_drinks_query);
             }
             ?>
         </div>
-
-        <div class="column" >
-            <h3>SEARCH A DRINK</h3>
-            <form action="" method="post">
+        <!-- search bar for all drinks -->
+        <div class="column">
+            <h2>Search a Drink</h2>
+            <form action="drinksv3.php" method="post">
                 <input type="text" name='search'>
                 <input type="submit" name="submit" value="go!">
             </form>
+            <!-- php for search bar -->
             <?php
 
-            if(isset($_POST['search'])) {
+            if (isset($_POST['search'])) {
                 $search = $_POST['search'];
 
                 $query1 = "SELECT * FROM drinks WHERE DItem LIKE '%$search%'";
                 $query = mysqli_query($con, $query1);
                 $count = mysqli_num_rows($query);
-
-                if($count ==0) {
+//prints if input is invalid
+                if ($count == 0) {
                     echo "<p> There was no search results!";
-                }else{
+                } else {
 
-                    while($row = mysqli_fetch_array($query)){
+                    while ($row = mysqli_fetch_array($query)) {
                         echo "<br>";
                         echo $row ['DItem'];
                     }
                 }
             }
             ?>
-
         </div>
     </div>
 </main>
+<!-- footer -->
 <footer>
     Contact information:<br>
     Email: chinsh@wgc.school.nz<br>
