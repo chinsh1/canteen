@@ -1,23 +1,23 @@
 <?php
 $con = mysqli_connect("localhost", "chinsh", "swiftbrain55", "chinsh_canteen");
-if(mysqli_connect_errno()){
-    echo "Failed to connect to MySQL:".mysqli_connect_error(); die();}
-else{
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
     echo "connected to database";
 }
-if(isset($_GET['special'])){
+if (isset($_GET['special'])) {
     $id = $_GET['special'];
-}else{
+} else {
     $id = 1;
 }
 
 /* Specials Query */
-/*SELECT specials.Weekday, foods.FItem, drinks.DItem FROM specials, foods, drinks */
-
+/*SELECT specials.Weekday, foods.FItem, drinks.DItem, specials.Special FROM specials, foods, drinks */
 $this_specials_query = "SELECT specials.Weekday, food.FItem, drinks.DItem, specials.Special
 FROM specials, food, drinks
 WHERE food.FoodID = specials.FoodID
-AND drinks.DrinkID = specials.DrinkID AND specials.Special AND specials.Weekday = '" .$id. "'";
+AND drinks.DrinkID = specials.DrinkID AND specials.Special AND specials.Weekday = '" . $id . "'";
 $this_specials_result = mysqli_query($con, $this_specials_query);
 $this_specials_record = mysqli_fetch_assoc($this_specials_result);
 
@@ -26,64 +26,72 @@ $all_specials_query = "SELECT Weekday FROM specials";
 $all_specials_result = mysqli_query($con, $all_specials_query);
 
 ?>
-<!-- -->
 <!DOCTYPE html>
 <html lang="en">
+<!-- Links to CSS page -->
 <head>
     <title> WGC CANTEEN </title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href ="stylev3.css">
+    <meta charset='utf-8'>
+    <link rel="stylesheet" type="text/css" href="stylev3.css">
 </head>
 
 <body>
 
 <header>
+    <!-- WGC logo in header -->
     <h1> <?php
-        echo "<img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/>";
+        echo "<a href='indexv3.php'> <img src='https://wgc.school.nz/wp-content/uploads/2018/09/WGC_Logo_Transparent_RGB.png' width='150px' height='150px' alt='WGC logo'/> </a>";
         ?> SPECIALS </h1>
 
     <nav>
-        <a href="indexv3.php"> HOME </a>
-        <a href="foodv3.php"> FOOD </a>
-        <a href="drinksv3.php"> DRINKS </a>
-        <a href="specialsv3.php"> SPECIALS </a>
+        <ul>
+            <!-- links to other pages -->
+            <a href="indexv3.php"> HOME </a>
+            <a href="foodv3.php"> FOOD </a>
+            <a href="drinksv3.php"> DRINKS </a>
+            <a href="specialsv3.php"> SPECIALS </a>
+        </ul>
     </nav>
 
 </header>
 <main>
+    <!-- formats the specials page into columns -->
     <div class="row">
-        <div class="column" >
+        <div class="column">
+            <!-- drop down bar to select a daily special -->
             <h2> Select a daily special</h2>
             <!--Specials form-->
-            <form name="specials form" id="specials form" method="get" action="specialsv3.php">
+            <form name="specials form" id="specials_form" method="get" action="specialsv3.php">
                 <select id="special" name="special">
                     <!--options-->
 
                     <?php
-                    while($all_specials_record = mysqli_fetch_assoc($all_specials_result)){
-                        echo "<option value = '".$all_specials_record['Weekday'] ."'>";
+                    while ($all_specials_record = mysqli_fetch_assoc($all_specials_result)) {
+                        echo "<option value = '" . $all_specials_record['Weekday'] . "'>";
                         echo $all_specials_record['Weekday'];
                         echo "</option>";
                     }
                     ?>
+
                 </select>
                 <input type="submit" name="specials_button" value="go!">
             </form>
         </div>
 
         <div class="column">
+            <!-- presents the day, items on special and total price -->
             <h2> Daily Special </h2>
             <?php
-            echo "<p>Welcome to the specials page, here are the items that are 20% off today!!</p>";
-            echo "<p class='center'> Day of the week: " .$this_specials_record['Weekday'] . "<br>";
-            echo "<p class='center'> Food special: " .$this_specials_record['FItem'] . "<br>";
-            echo "<p class='center'> Drink special: " .$this_specials_record['DItem'] . "<br>";
-            echo "<p class='center'> Total Cost: $" .$this_specials_record['Special'] . "<br>";
+            echo "<p class='center'>Welcome to the specials page, here are the items that are 20% off today!!";
+            echo "<p class='center'> Day of the week: " . $this_specials_record['Weekday'] . "<br>";
+            echo "<p class='center'> Food special: " . $this_specials_record['FItem'] . "<br>";
+            echo "<p class='center'> Drink special: " . $this_specials_record['DItem'] . "<br>";
+            echo "<p class='center'> Total Cost: $" . $this_specials_record['Special'] . "<br>";
             ?>
         </div>
     </div>
 </main>
-
+<!-- footer -->
 <footer>
     Contact information:<br>
     Email: chinsh@wgc.school.nz<br>
